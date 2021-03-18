@@ -1,122 +1,139 @@
 {
-    "prueba_inicio": {
-        "type": "informativo",
-        "description": "bloque que despliega información",
-        "name": "prueba_inicio",
-        "parameters": {
-            "contenido": "Hola, soy un chatbot y esto es un mensaje de prueba y adios",
-            "contenttype": "text",
-            "typingtime": 3,
-            "id_robot": 391
-        },
-        "outputs": {
-            "next_id": "pruebaCorreo_01inicial_inicial"
-        }
-    },
-    "prueba_qa": {
-        "type": "informativo",
-        "description": "bloque que despliega información",
-        "name": "prueba_qa",
-        "parameters": {
-            "contenido": "Vamos a ver si no truena",
-            "contenttype": "text",
-            "typingtime": 7,
-            "id_robot": 391
-        },
-        "outputs": {
-            "next_id": "pruebaCorreo_01inicial_inicial"
-        }
-    },
-    "prueba_dos": {
-        "type": "informativo",
-        "description": "bloque que despliega información",
-        "name": "prueba_dos",
-        "parameters": {
-            "contenido": "Puedo hacer muchas cosas, entre ellas despedirme. Adios",
-            "contenttype": "text",
-            "typingtime": 3,
-            "id_robot": 391
-        },
-        "outputs": {
-            "next_id": "Salida"
-        }
-    },
-    "pruebaCorreo_01inicial_inicial": {
-        "type": "quickReply",
-        "description": "bloque que despliega un quickReplay",
-        "parameters": {
-            "handlebars": "",
-            "jsonVariable": {
-                "variable": {
-                    "name_var": "var_case",
-                    "opc_type": "Variable",
-                    "var": 0,
-                    "opc_data": "Numerico"
-                }
+    "bloques":{
+        "prueba_inicio": {
+            "type": "informativo",
+            "description": "bloque que despliega información",
+            "name": "prueba_inicio",
+            "parameters": {
+                "contenido": "Hola, soy un chatbot y esto es un mensaje de prueba y adios",
+                "contenttype": "text",
+                "typingtime": 3
             },
-            "typingtime": 3,
-            "json": {
-                "content": "¿Cuál es tu correo?",
-                "buttons": [
-                    {
-                        "title": "email",
-                        "next_block": "prueba_dos"
-                    },
-                    {
-                        "title": "otro",
-                        "next_block": "prueba_qa"
+            "outputs": {
+                "next_id": "pruebaCorreo_01inicial_inicial"
+            }
+        },
+        "prueba_qa": {
+            "type": "informativo",
+            "description": "bloque que despliega información",
+            "name": "prueba_qa",
+            "parameters": {
+                "contenido": "Vamos a ver si no truena",
+                "contenttype": "text",
+                "typingtime": 7,
+                "id_robot": 380
+            },
+            "outputs": {
+                "next_id": "pruebaCorreo_01inicial_inicial"
+            }
+        },
+        "prueba_dos": {
+            "type": "informativo",
+            "description": "bloque que despliega información",
+            "name": "prueba_dos",
+            "parameters": {
+                "contenido": "Puedo hacer muchas cosas, entre ellas despedirme. Adios",
+                "contenttype": "text",
+                "typingtime": 3,
+                "id_robot": 380
+            },
+            "outputs": {
+                "next_id": "Salida"
+            }
+        },
+        "pruebaCorreo_01inicial_inicial": {
+            "type": "quickReply",
+            "description": "bloque que despliega un quickReplay",
+            "parameters": {
+                "handlebars": "",
+                "jsonVariable": {
+                    "variable": {
+                        "name_var": "var_case",
+                        "opc_type": "Variable",
+                        "var": 0,
+                        "opc_data": "Numerico"
                     }
-                ]
-            },
-            "content": "¿Cuál es tu correo?",
-            "buttonTrue": {
-                "next_block": ""
-            },
-            "buttonFalse": {
-                "title": ""
-            },
-            "typeVisual": "",
-            "id_robot": 391
-        },
-        "outputs": {
-            "default_id": "prueba_qa"
-        },
-        "name": "pruebaCorreo_01inicial_inicial"
-    },
-    "prueba_slide": {
-        "type": "slide",
-        "description": "bloque que despliega carrucel",
-        "name": "prueba_slide",
-        "parameters": {
-            "typingtime": 3,
-            "content": "",
-            "nombreVariable": "var_slideMenu",
-            "tipoVariable": "Variable",
-            "tipoDato": "Cadena",
-            "id_var": "var_slide",
-            "json": [
-                {
+                },
+                "typingtime": 3,
+                "json": {
+                    "content": "¿Cuál es tu correo?",
                     "buttons": [
                         {
-                            "titlebutton": "Boton 1",
-                            "typebutton": "url",
-                            "opc_nextid": "https://www.youtube.com/"
+                            "title": "email",
+                            "next_block": "prueba_dos"
                         },
                         {
+                            "title": "otro",
+                            "next_block": "prueba_slide"
+                        }
+                    ]
+                },
+                "content": "¿Cuál es tu correo?",
+                "buttonTrue": {
+                    "next_block": ""
+                },
+                "buttonFalse": {
+                    "title": ""
+                },
+                "typeVisual": ""            },
+            "outputs": {
+                "default_id": "prueba_qa"
+            },
+            "name": "pruebaCorreo_01inicial_inicial"
+        },
+        "prueba_slide": {
+            "type": "slide",
+            "description": "bloque que despliega carrucel",
+            "name": "prueba_slide",
+            "parameters": {
+                "typingtime": 3,
+                "content": "",
+                "nombreVariable": "var_slideMenu",
+                "jsonVariable": {
+                    "variable": {
+                        "name_var": "var_slideMenu",
+                        "opc_type": "Variable",
+                        "var": 0,
+                        "opc_data": "Numerico"
+                    }
+                },
+                "tipoVariable": "Variable",
+                "tipoDato": "Cadena",
+                "id_var": "var_slide",
+                "json": [
+                    {
+                    "buttons":[
+                        { 
+                            "titlebutton": "Boton 1",
+                            "typebutton": "web_url",
+                            "opc_nextid": "https://www.youtube.com/"
+                        },
+                        { 
                             "titlebutton": "Boton 2",
-                            "typebutton": "url",
+                            "typebutton": "web_url",
                             "opc_nextid": "https://www.reddit.com/"
                         }
                     ],
                     "title": "Prueba titulo",
                     "image_url": "data:image/jpeg;base64,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",
                     "subtitle": "Esta es una prueba de carrusel."
-                }
-            ],
-            "id_robot": 391
-        },
-        "outputs": {
+                    }
+                ]
+            },
+            "outputs": {
             "default_id": "prueba_qa"
+            }
         }
-    }
+    } ,
+    "chatbotFB": {
+        "name_robot": "charlybot",
+        "id_face": "111445520541316",
+        "block_ini": "prueba_inicio",
+        "type_blocki": "informativo",
+        "access_token": "EAALZCCZBzPwfkBAAo7njAlW7s4DTj1ZCs5v1ung1MhEyMlJXOOtiG8r7JcBgXVPhZBHkJONyTB6jKG470UyqGPWn4aDPnisgtT2ZCZAwQIjQgZAZBufZBJXmHz6mPKSgdmP6ikDA87vocZBay2dfQdz1OYezmYbxwfILXUvXtjUMZAniQZDZD",
+        "id_user": "charlygoldcruz@gmail.com",
+        "api_nlp":"http://localhost:8282/"
+      }
+      
 }
+

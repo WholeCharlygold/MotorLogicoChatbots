@@ -132,6 +132,18 @@ class baseDatos:
             connection.close()
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
+            
+    def borrarBotonesElementos(self, id_elemento, id_bloque):
+        connection = self.conexionBaseDeDatos()
+        cursor = connection.cursor();     
+        try:  
+            cursor.execute("DELETE FROM botones where id_elemento ='"+id_elemento+"'; "+
+                           "DELETE FROM elementos where id_block ="+id_bloque+"; ")
+            connection.commit()
+            cursor.close()
+            connection.close()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
 
         
 

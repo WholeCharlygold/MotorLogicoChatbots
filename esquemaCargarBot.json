@@ -1,0 +1,139 @@
+{
+    "bloques":{
+        "prueba_inicio": {
+            "type": "informativo",
+            "description": "bloque que despliega información",
+            "name": "prueba_inicio",
+            "parameters": {
+                "contenido": "Hola, soy un chatbot y esto es un mensaje de prueba y adios",
+                "contenttype": "text",
+                "typingtime": 3
+            },
+            "outputs": {
+                "next_id": "pruebaCorreo_01inicial_inicial"
+            }
+        },
+        "prueba_qa": {
+            "type": "informativo",
+            "description": "bloque que despliega información",
+            "name": "prueba_qa",
+            "parameters": {
+                "contenido": "Vamos a ver si no truena",
+                "contenttype": "text",
+                "typingtime": 7,
+                "id_robot": 380
+            },
+            "outputs": {
+                "next_id": "pruebaCorreo_01inicial_inicial"
+            }
+        },
+        "prueba_dos": {
+            "type": "informativo",
+            "description": "bloque que despliega información",
+            "name": "prueba_dos",
+            "parameters": {
+                "contenido": "Puedo hacer muchas cosas, entre ellas despedirme. Adios",
+                "contenttype": "text",
+                "typingtime": 3,
+                "id_robot": 380
+            },
+            "outputs": {
+                "next_id": "Salida"
+            }
+        },
+        "pruebaCorreo_01inicial_inicial": {
+            "type": "quickReply",
+            "description": "bloque que despliega un quickReplay",
+            "parameters": {
+                "handlebars": "",
+                "jsonVariable": {
+                    "variable": {
+                        "name_var": "var_case",
+                        "opc_type": "Variable",
+                        "var": 0,
+                        "opc_data": "Numerico"
+                    }
+                },
+                "typingtime": 3,
+                "json": {
+                    "content": "¿Cuál es tu correo?",
+                    "buttons": [
+                        {
+                            "title": "email",
+                            "next_block": "prueba_dos"
+                        },
+                        {
+                            "title": "otro",
+                            "next_block": "prueba_slide"
+                        }
+                    ]
+                },
+                "content": "¿Cuál es tu correo?",
+                "buttonTrue": {
+                    "next_block": ""
+                },
+                "buttonFalse": {
+                    "title": ""
+                },
+                "typeVisual": ""            },
+            "outputs": {
+                "default_id": "prueba_qa"
+            },
+            "name": "pruebaCorreo_01inicial_inicial"
+        },
+        "prueba_slide": {
+            "type": "slide",
+            "description": "bloque que despliega carrucel",
+            "name": "prueba_slide",
+            "parameters": {
+                "typingtime": 3,
+                "content": "",
+                "nombreVariable": "var_slideMenu",
+                "jsonVariable": {
+                    "variable": {
+                        "name_var": "var_slideMenu",
+                        "opc_type": "Variable",
+                        "var": 0,
+                        "opc_data": "Numerico"
+                    }
+                },
+                "tipoVariable": "Variable",
+                "tipoDato": "Cadena",
+                "id_var": "var_slide",
+                "json": [
+                    {
+                    "buttons":[
+                        { 
+                            "titlebutton": "Boton 1",
+                            "typebutton": "web_url",
+                            "opc_nextid": "https://www.youtube.com/"
+                        },
+                        { 
+                            "titlebutton": "Boton 2",
+                            "typebutton": "web_url",
+                            "opc_nextid": "https://www.reddit.com/"
+                        }
+                    ],
+                    "title": "Prueba titulo",
+                    "image_url": "https://st2.depositphotos.com/3008028/5540/i/600/depositphotos_55407975-stock-photo-royal-blue-background.jpg",
+                    "subtitle": "Esta es una prueba de carrusel."
+                    }
+                ]
+            },
+            "outputs": {
+            "default_id": "prueba_qa"
+            }
+        }
+    } ,
+    "chatbotFB": {
+        "name_robot": "oliverBot",
+        "id_face": "2153123008120093",
+        "block_ini": "prueba_inicio",
+        "type_blocki": "quickreply",
+        "access_token": "EAAHNkscg2TcBAMvebksfOxuFBpMeR5sUhzHTKtqdi6NkqQKZAdkeaGVJ9Yc5bNbvL3JLzCgB7EEqsVUTZADhidVcC3zJV1UZB4Uz0Hm3fZB9IETnWb4I8MoK8nxpenC1lYwnjwnRwMHVZA1FKw8d3A45t9xCxmPKnm6kIr5ZCA8wZDZD",
+        "id_user": "oliverbp88@gmail.com",
+        "api_nlp":"http://localhost:8282/"
+      }
+      
+}
+
