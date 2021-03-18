@@ -1,0 +1,880 @@
+{
+  "contadorFijo": {
+    "name": "",
+    "description": "Contador que siempre te lleva a una misma opción",
+    "example": "imagen.jpg",
+    "components": [
+      {
+        "01inicial": {
+          "type": "caseFijo",
+          "order": 1,
+          "description": "contador sencillo",
+          "explanation": {
+            "intentos": {
+              "name": "numero de intentos",
+              "description": "numero de intentos permitido",
+              "recommended": 3
+            },
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_case"
+            },
+            "message": {
+              "name": "mensaje a desplejar",
+              "description": "mensaje que se depliega al usuario",
+              "recommended": {
+                "content": "hola prueba",
+                "type": "text"
+              }
+            },
+            "defaultMessage": {
+              "name": "mensaje por defecto",
+              "description": "mensaje que se depliega al usuario si ocurre un error en la funcionalidad",
+              "recommended": {
+                "content": "hola default",
+                "type": "text"
+              }
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "url": "http://127.0.0.1:1111/increase/{{nombreVariable}}/{{intentos}}/"
+          },
+          "outputs": {
+            "salidasCase": "userDefinded",
+            "default": "userDefinded",
+            "error": "userDefinded"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "salidasCase": {
+          "name": "salida a donde se cicla contador"
+        },
+        "default": {
+          "name": "salida default de contador"
+        },
+        "error": {
+          "name": "salida al limite de intentos"
+        }
+      }
+    }
+  },
+  "contadorDinamico": {
+    "name": "",
+    "description": "Contador donde la opción cambia de acuerdo al valor de la variable",
+    "example": "imagen.jpg",
+    "components": [
+      {
+        "01inicial": {
+          "type": "caseDinamico",
+          "order": 1,
+          "description": "contador sencillo",
+          "explanation": {
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_case"
+            },
+            "messages": {
+              "name": "mensajes a desplejar",
+              "description": "mensajes que se depliegan al usuario",
+              "recommended": {
+                "content": "hola prueba",
+                "type": "text"
+              }
+            },
+            "defaultMessage": {
+              "name": "mensaje por defecto",
+              "description": "mensaje que se depliega al usuario si ocurre un error en la funcionalidad",
+              "recommended": {
+                "content": "hola default",
+                "type": "text"
+              }
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "url": "http://127.0.0.1:1111/increase/{{nombreVariable}}/"
+          },
+          "outputs": {
+            "salidasCase": "userDefinded",
+            "default": "userDefinded",
+            "error": "userDefinded"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "salidasCase": {
+          "name": "salida a donde se cicla contador"
+        },
+        "default": {
+          "name": "salida default de contador"
+        },
+        "error": {
+          "name": "salida al limite de intentos"
+        }
+      }
+    }
+  },
+  "messageRandom": {
+    "name": "",
+    "description": "Muestra un mensaje aleatorio, de una lista preestablecida",
+    "example": "imagen.jpg",
+    "components": [
+      {
+        "01inicial": {
+          "type": "caseRandomMenssage",
+          "order": 1,
+          "description": "muestra un menaje aleatorio",
+          "explanation": {
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_case"
+            },
+            "messages": {
+              "name": "lista de que se pueden desplegar",
+              "description": "mensajes que se depliegan al usuario",
+              "recommended": [
+                {
+                  "content": "hola prueba",
+                  "type": "text"
+                }
+              ]
+            },
+            "defaultMessage": {
+              "name": "mensaje por defecto",
+              "description": "mensaje que se depliega al usuario si ocurre un error en la funcionalidad",
+              "recommended": {
+                "content": "hola default",
+                "type": "text"
+              }
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "url": "http://127.0.0.1:1111/random/{{nombreVariable}}/"
+          },
+          "outputs": {
+            "next": "userDefinded",
+            "default": "userDefinded"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "next": {
+          "name": "siguiente bloque"
+        },
+        "default": {
+          "name": "salida default"
+        }
+      }
+    }
+  },
+  "listMessages": {
+    "name": "Lista de mensajes encadenados",
+    "description": "muestra una lista de mensajes encadenados",
+    "example": "imagen.jpg",
+    "components": [
+      {
+        "01inicial": {
+          "type": "caseListMenssages",
+          "order": 1,
+          "description": "muestra un menaje aleatorio",
+          "explanation": {
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_case"
+            },
+            "messages": {
+              "name": "lista de que se pueden desplegar",
+              "description": "mensajes que se depliegan al usuario",
+              "recommended": {
+                "content": "hola prueba",
+                "type": "text"
+              }
+            },
+            "defaultMessage": {
+              "name": "mensaje por defecto",
+              "description": "mensaje que se depliega al usuario si ocurre un error en la funcionalidad",
+              "recommended": {
+                "content": "no te entiendo",
+                "type": "text"
+              }
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "url": "http://127.0.0.1:1111/increase/{{nombreVariable}}/"
+          },
+          "outputs": {
+            "next": "userDefinded",
+            "default": "userDefinded"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "next": {
+          "name": "siguiente bloque"
+        },
+        "default": {
+          "name": "salida default"
+        }
+      }
+    }
+  },
+  "optionMenuFijo": {
+    "name": "",
+    "description": "Menu con opciones fijas",
+    "example": "imagen.jpg",
+    "components": [
+      {
+        "01inicial": {
+          "type": "visual",
+          "order": 1,
+          "description": "contador sencillo",
+          "explanation": {
+            "jsonMenu": {
+              "name": "datos Menu",
+              "description": "json que contiene los datos de llenado"
+            },
+            "time": {
+              "name": "Tiempo de espera",
+              "description": "tiempo de espera para mostrar el menú"
+            },
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_case"
+            },
+            "typeVisual": {
+              "name": "tipo de visual",
+              "description": "tipo de menu al que se va a desplegar"
+            }
+          },
+          "parameters": {
+            "handlebars": "{{#if handlebars.content}}{'content':'{{handlebars.content}}','buttons':[{{#each handlebars.buttons}}{'title':'{{title}}','next_block':'{{next_block}}'}{{#if @last}}{{else}},{{/if}}{{/each}}]}{{/if}}{{#if handlebars.elements}}[{{#each handlebars.elements}}{'title':'{{title}}','subtitle':'{{subtitle}}','image_url':'{{image_url}}','buttons':[{{#each buttons}}{'titlebutton':'{{titlebutton}}','typebutton':'{{typebutton}}','opc_nextid':'{{opc_nextid}}'}{{#if @last}}{{else}},{{/if}}{{/each}}]}{{#if @last}}{{else}},{{/if}}{{/each}}]{{/if}}"
+          },
+          "outputs": {
+            "default": "userDefinded"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "default": {
+          "name": "salida default de contador"
+        }
+      }
+    }
+  },
+  "userValidation": {
+    "name": "",
+    "description": "Validacion de usuario con QR de dos opciones",
+    "example": "imagen.jpg",
+    "components": [
+      {
+        "01inicial": {
+          "type": "visual",
+          "order": 1,
+          "description": "contador sencillo",
+          "explanation": {
+            "content": {
+              "name": "mensaje quickReply",
+              "description": "mensaje que se le muesta al usuario en el quickReply"
+            },
+            "buttonTrue": {
+              "name": "validacion positiva",
+              "description": "boton positivo"
+            },
+            "buttonFalse": {
+              "name": "validacion negativa",
+              "description": "boton negativo"
+            },
+            "time": {
+              "name": "Tiempo de espera",
+              "description": "tiempo de espera para mostrar el menú"
+            },
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_case"
+            }
+          },
+          "parameters": {
+            "typeVisual": "quickReply",
+            "handlebars": "{'content':'{{content}}','buttons':[{'title':'{{buttonTrue.title}}','next_block':'{{buttonTrue.next_block}}'},{'title':'{{buttonFalse.title}}','next_block':'{{buttonFalse.next_block}}'}]}"
+          },
+          "outputs": {
+            "default": "userDefinded"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "default": {
+          "name": "salida default de contador"
+        }
+      }
+    }
+  },
+  "validacionFormatoCorreo": {
+    "name": "selección de correo",
+    "description": "Validacion de correo con QR",
+    "example": "imagen.jpg",
+    "components": [
+      {
+        "01inicial": {
+          "type": "visual",
+          "order": 1,
+          "description": "contador sencillo",
+          "explanation": {
+            "content": {
+              "name": "mensaje quickReply",
+              "description": "mensaje que se le muesta al usuario en el quickReply",
+              "example": "¿Cuál es tu correo?"
+            },
+            "buttonTrue": {
+              "next_block": "01inicial"
+            },
+            "buttonFalse": {
+              "name": "validacion negativa",
+              "description": "titulo para dar otra opción al uasuario",
+              "example": {
+                "title": "otro"
+              }
+            },
+            "time": {
+              "name": "Tiempo de espera",
+              "description": "tiempo de espera para mostrar el menú"
+            },
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_case"
+            }
+          },
+          "parameters": {
+            "typeVisual": "quickReply",
+            "handlebars": "{'content':'{{content}}','buttons':[{'title':'<user_email>','next_block':'{{buttonTrue.next_block}}'},{'title':'{{buttonFalse.title}}','next_block':'capturaCorreo'}]}"
+          },
+          "outputs": {
+            "default": "userDefinded"
+          }
+        }
+      },
+      {
+        "capturaCorreo": {
+          "type": "input",
+          "order": 2,
+          "description": "captura correo",
+          "explanation": {
+            "content": {
+              "name": "texto de petición",
+              "description": "texto para pedir al uasuario que introduzca su correo",
+              "example": "introduce tu correo"
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "regex": "^[a-z0-9]+[\\._]?[a-z0-9]+[@]\\w+[.]\\w{2,3}$",
+            "nombreVariable": "email",
+            "contentType": "text"
+          },
+          "outputs": {
+            "next": "qrValidaSiNo",
+            "default": "contadorIntentos"
+          }
+        }
+      },
+      {
+        "contadorIntentos": {
+          "type": "caseFijo",
+          "order": 3,
+          "description": "contador para controlar intentos al introducir un correo",
+          "explanation": {
+            "intentos": {
+              "name": "numero de intentos",
+              "description": "numero de intentos permitido",
+              "recommended": 3
+            },
+            "message": {
+              "name": "mensaje a desplejar",
+              "description": "mensaje que se depliega al usuario cada vez que hace un nuevo intento",
+              "example": "intentalo de nuevo por favor"
+            },
+            "defaultMessage": {
+              "name": "mensaje por defecto",
+              "description": "mensaje que se depliega al usuario si ocurre un error en la funcionalidad",
+              "example": "no logro comprender"
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "nombreVariable": "contadorCorreo",
+            "url": "http://127.0.0.1:1111/increase/{{nombreVariable}}/{{intentos}}/"
+          },
+          "outputs": {
+            "salidasCase": "capturaCorreo",
+            "default": "capturaCorreo",
+            "error": "mensajeOperador"
+          }
+        }
+      },
+      {
+        "mensajeOperador": {
+          "type": "informativo",
+          "order": 4,
+          "description": "despliega un mensaje al alcansar número maximo de intentos",
+          "explanation": {
+            "content": {
+              "name": "mensaje a desplegar",
+              "description": "mensaje que se le muestra al usuario",
+              "example": "se le comunicará con un accesor"
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "contentType": "text"
+          },
+          "outputs": {
+            "next": "userDefinded"
+          }
+        }
+      },
+      {
+        "qrValidaSiNo": {
+          "type": "visual",
+          "order": 6,
+          "description": "contador sencillo",
+          "explanation": {
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_qr_si_no"
+            }
+          },
+          "parameters": {
+            "typeVisual": "quickReply",
+            "content": "Tu correo es: @email",
+            "time": 3,
+            "buttonTrue": {
+              "title": "sí",
+              "next_block": "01inicial"
+            },
+            "buttonFalse": {
+              "title": "No",
+              "next_block": "contadorIntentos"
+            },
+            "handlebars": "{'content':'{{content}}','buttons':[{'title':'{{buttonTrue.title}}','next_block':'{{buttonTrue.next_block}}'},{'title':'{{buttonFalse.title}}','next_block':'{{buttonFalse.next_block}}'}]}"
+          },
+          "outputs": {
+            "default": "mensajeOperador"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "default": {
+          "name": "salida default de contador"
+        }
+      }
+    }
+  },
+  "validacionFormatoCorreo2": {
+    "name": "selección de correo",
+    "description": "Validacion de correo con QR",
+    "example": "imagen.jpg",
+    "components": [
+      {
+        "01inicial": {
+          "type": "visual",
+          "order": 1,
+          "description": "contador sencillo",
+          "explanation": {
+            "content": {
+              "name": "mensaje quickReply",
+              "description": "mensaje que se le muesta al usuario en el quickReply",
+              "example": "¿Cuál es tu correo?"
+            },
+            "buttonTrue": {
+              "next_block": "01inicial"
+            },
+            "buttonFalse": {
+              "name": "validacion negativa",
+              "description": "titulo para dar otra opción al uasuario",
+              "example": {
+                "title": "otro"
+              }
+            },
+            "time": {
+              "name": "Tiempo de espera",
+              "description": "tiempo de espera para mostrar el menú"
+            },
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_case"
+            }
+          },
+          "parameters": {
+            "typeVisual": "quickReply",
+            "handlebars": "{'content':'{{content}}','buttons':[{'title':'<user_email>','next_block':'{{buttonTrue.next_block}}'},{'title':'{{buttonFalse.title}}','next_block':'capturaCorreo'}]}"
+          },
+          "outputs": {
+            "default": "userDefinded"
+          }
+        }
+      },
+      {
+        "capturaCorreo": {
+          "type": "input",
+          "order": 2,
+          "description": "captura correo",
+          "explanation": {
+            "content": {
+              "name": "texto de petición",
+              "description": "texto para pedir al uasuario que introduzca su correo",
+              "example": "introduce tu correo"
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "regex": "^[a-z0-9]+[\\._]?[a-z0-9]+[@]\\w+[.]\\w{2,3}$",
+            "nombreVariable": "email",
+            "contentType": "text"
+          },
+          "outputs": {
+            "next": "qrValidaSiNo",
+            "default": "contadorIntentos"
+          }
+        }
+      },
+      {
+        "contadorIntentos": {
+          "type": "caseFijo",
+          "order": 3,
+          "description": "contador para controlar intentos al introducir un correo",
+          "explanation": {
+            "intentos": {
+              "name": "numero de intentos",
+              "description": "numero de intentos permitido",
+              "recommended": 3
+            },
+            "message": {
+              "name": "mensaje a desplejar",
+              "description": "mensaje que se depliega al usuario cada vez que hace un nuevo intento",
+              "example": "intentalo de nuevo por favor"
+            },
+            "defaultMessage": {
+              "name": "mensaje por defecto",
+              "description": "mensaje que se depliega al usuario si ocurre un error en la funcionalidad",
+              "example": "no logro comprender"
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "nombreVariable": "contadorCorreo",
+            "url": "http://127.0.0.1:1111/increase/{{nombreVariable}}/{{intentos}}/"
+          },
+          "outputs": {
+            "salidasCase": "capturaCorreo",
+            "default": "capturaCorreo",
+            "error": "mensajeOperador"
+          }
+        }
+      },
+      {
+        "mensajeOperador": {
+          "type": "informativo",
+          "order": 4,
+          "description": "despliega un mensaje al alcansar número maximo de intentos",
+          "explanation": {
+            "content": {
+              "name": "mensaje a desplegar",
+              "description": "mensaje que se le muestra al usuario",
+              "example": "se le comunicará con un accesor"
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "contentType": "text"
+          },
+          "outputs": {
+            "next": "userDefinded"
+          }
+        }
+      },
+      {
+        "qrValidaSiNo": {
+          "type": "visual",
+          "order": 6,
+          "description": "contador sencillo",
+          "explanation": {
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_qr_si_no"
+            }
+          },
+          "parameters": {
+            "typeVisual": "quickReply",
+            "content": "Tu correo es: @email",
+            "time": 3,
+            "buttonTrue": {
+              "title": "sí",
+              "next_block": "01inicial"
+            },
+            "buttonFalse": {
+              "title": "No",
+              "next_block": "contadorIntentos"
+            },
+            "handlebars": "{'content':'{{content}}','buttons':[{'title':'{{buttonTrue.title}}','next_block':'{{buttonTrue.next_block}}'},{'title':'{{buttonFalse.title}}','next_block':'{{buttonFalse.next_block}}'}]}"
+          },
+          "outputs": {
+            "default": "mensajeOperador"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "default": {
+          "name": "salida default de contador"
+        }
+      }
+    }
+  },
+  "informativo": {
+    "name": "",
+    "description": "Despliega un mensaje",
+    "example": "imagen.png",
+    "components": [
+      {
+        "01inicial": {
+          "type": "informativo",
+          "order": 1,
+          "description": "despliega un mensaje",
+          "explanation": {
+            "content": {
+              "name": "mensaje a desplegar",
+              "description": "mensaje que se le muestra al usuario"
+            },
+            "time": {
+              "name": "Tiempo de espera",
+              "description": "tiempo de espera para mostrar el menú"
+            },
+            "contentType": {
+              "name": "tipo de contenido",
+              "description": "formato en que se despliega el mensaje"
+            }
+          },
+          "parameters": {},
+          "outputs": {
+            "next": "userDefinded"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "next": {
+          "name": "siguiente"
+        }
+      }
+    }
+  },
+  "validacionFormato": {
+    "name": "",
+    "description": "Validacion de formato con contador",
+    "example": "imagen.png",
+    "components": [
+      {
+        "01inicial": {
+          "type": "input",
+          "order": 1,
+          "description": "solicita y valida información",
+          "explanation": {
+            "content": {
+              "name": "mensaje quickReply",
+              "description": "mensaje que se le muesta al usuario en el quickReply"
+            },
+            "time": {
+              "name": "Tiempo de espera",
+              "description": "tiempo de espera para mostrar el menú"
+            },
+            "contentType": {
+              "name": "tipo de contenido",
+              "description": "formato en que se despliega el mensaje"
+            },
+            "regex": {
+              "name": "regex",
+              "description": " expresion regex para validar formato"
+            },
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable para capturar información"
+            }
+          },
+          "parameters": {
+            "handlebars": "{'content':'{{content}}','buttons':[{'title':'{{buttonTrue.title}}','next_block':'{{buttonTrue.next_block}}'},{'title':'{{buttonFalse.title}}','next_block':'{{buttonFalse.next_block}}'}]}"
+          },
+          "outputs": {
+            "next": "userDefinded",
+            "default": "contador"
+          }
+        }
+      },
+      {
+        "contador": {
+          "type": "caseDinamico",
+          "order": 3,
+          "description": "contador sencillo",
+          "explanation": {
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable de contador",
+              "recommended": "var_case"
+            },
+            "messages": {
+              "name": "mensajes a desplejar",
+              "description": "mensajes que se depliegan al usuario",
+              "recommended":[ {
+                "content": "hola prueba",
+                "type": "text"
+              }]
+            },
+            "defaultMessage": {
+              "name": "mensaje por defecto",
+              "description": "mensaje que se depliega al usuario si ocurre un error en la funcionalidad",
+              "recommended": {
+                "content": "hola default",
+                "type": "text"
+              }
+            }
+          },
+          "parameters": {
+            "time": 3,
+            "url": "http://127.0.0.1:1111/increase/{{nombreVariable}}/"
+          },
+          "outputs": {
+            "salidasCase": "validacionFormato",
+            "default": "01inicial",
+            "error": "mensajeOperador"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "next": {
+          "name": "validacion exitosa"
+        }
+      },
+      "contador": {
+        "error": {
+          "name": "validacion fallida"
+        }
+      }
+    }
+  },
+  "input": {
+    "name": "",
+    "description": "Captura de información",
+    "example": "imagen.png",
+    "components": [
+      {
+        "01inicial": {
+          "type": "input",
+          "order": 1,
+          "description": "solicita y valida información",
+          "explanation": {
+            "content": {
+              "name": "mensaje quickReply",
+              "description": "mensaje que se le muesta al usuario en el quickReply"
+            },
+            "nombreVariable": {
+              "name": "variable de control",
+              "description": "nombre que recibe la variable para capturar información"
+            }
+          },
+          "parameters": {
+            "contentType": "text",
+            "regex": "*",
+            "time": 1
+          },
+          "outputs": {
+            "next": "userDefinded",
+            "default": "userDefinded"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "default": {
+          "name": "salida default de nlp",
+          "nlp": {
+            "example": [],
+            "intension": "",
+            "next": ""
+          }
+        },
+        "next": {
+          "name": "siguiente"
+        }
+      }
+    }
+  },
+  "nlp": {
+    "name": "",
+    "description": "Procesamiento de lenguaje natural",
+    "example": "imagen.png",
+    "components": [
+      {
+        "01inicial": {
+          "type": "nlp",
+          "order": 1,
+          "description": "saltos de nlp",
+          "explanation": {
+            "json_nlp": {
+              "name": "json de NLP",
+              "description": "json con condiciones de salto por NLP"
+            },
+            "jsonIntensionNLP": {
+              "name": "JSON con intensiones",
+              "description": "JSON que contiene los ejemplos de intensiones a extraer y ejemplos de posibles oraciones"
+            }
+          },
+          "parameters": {
+            "default_message": "Lo siento pero no logro comprender lo que me pides"
+          },
+          "outputs": {
+            "default": "userDefinded"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "01inicial": {
+        "default": {
+          "name": "salida default de nlp"
+        }
+      }
+    }
+  }
+}

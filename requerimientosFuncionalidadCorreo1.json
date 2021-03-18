@@ -1,0 +1,301 @@
+{
+  "pruebaCorreo": {
+    "type": "validacionFormatoCorreo",
+    "requerimientos": {
+      "01inicial": {
+        "content": {
+          "type": "string",
+          "responsible": "UX",
+          "recommended": false,
+          "contador": false,
+          "name": "mensaje quickReply",
+          "description": "mensaje que se le muesta al usuario en el quickReply",
+          "example": "¿Cuál es tu correo?",
+          "value": "¿Cuál es tu correo?"
+        },
+        "buttonTrue": {
+          "type": "jonButton",
+          "responsible": "UX",
+          "recommended": false,
+          "constraints": false,
+          "next_block": "inicial",
+          "value": {
+            "next_block": "pruebaCorreo"
+          }
+        },
+        "buttonFalse": {
+          "type": "jonButton",
+          "responsible": "UX",
+          "recommended": false,
+          "constraints": false,
+          "name": "validacion negativa",
+          "description": "titulo para dar otra opción al uasuario",
+          "example": {
+            "title": "otro"
+          },
+          "value": {
+            "title": "otro"
+          }
+        },
+        "time": {
+          "type": "select",
+          "responsible": "UX",
+          "recommended": 2,
+          "constraints": [
+            {
+              "key": "uno",
+              "value": 1
+            },
+            {
+              "key": "dos",
+              "value": 2
+            },
+            {
+              "key": "tres",
+              "value": 3
+            }
+          ],
+          "name": "Tiempo de espera",
+          "description": "tiempo de espera para mostrar el menú",
+          "value": 3
+        },
+        "nombreVariable": {
+          "type": "string",
+          "responsible": "DEV",
+          "recommended": "var_case",
+          "constraints": false,
+          "name": "variable de control",
+          "description": "nombre que recibe la variable de contador",
+          "value": "var_case"
+        }
+      },
+      "capturaCorreo": {
+        "content": {
+          "type": "string",
+          "responsible": "UX",
+          "recommended": false,
+          "contador": false,
+          "name": "texto de petición",
+          "description": "texto para pedir al uasuario que introduzca su correo",
+          "example": "introduce tu correo",
+          "value": "introduce tu correo"
+        }
+      },
+      "contadorIntentos": {
+        "intentos": {
+          "type": "Numerico",
+          "responsible": "UX",
+          "recommended": 3,
+          "constraints": {
+            "description": "menor de 5",
+            "value": 3
+          },
+          "name": "numero de intentos",
+          "description": "numero de intentos permitido",
+          "value": 3
+        },
+        "message": {
+          "type": "dictDisplay",
+          "responsible": "UX",
+          "recommended": false,
+          "constraints": false,
+          "name": "mensaje a desplejar",
+          "description": "mensaje que se depliega al usuario cada vez que hace un nuevo intento",
+          "example": "intentalo de nuevo por favor",
+          "value": "intentalo de nuevo por favor"
+        },
+        "defaultMessage": {
+          "type": "dictDisplay",
+          "responsible": "UX",
+          "recommended": false,
+          "constraints": false,
+          "name": "mensaje por defecto",
+          "description": "mensaje que se depliega al usuario si ocurre un error en la funcionalidad",
+          "example": "no logro comprender",
+          "value": {
+            "content": "no logro comprender",
+            "type": "text"
+          }
+        }
+      },
+      "mensajeOperador": {
+        "content": {
+          "type": "string",
+          "responsible": "UX",
+          "recommended": false,
+          "constraints": false,
+          "name": "mensaje a desplegar",
+          "description": "mensaje que se le muestra al usuario",
+          "example": "se le comunicará con un accesor",
+          "value": "se le comunicará con un accesor"
+        }
+      },
+      "qrValidaSiNo": {
+        "nombreVariable": {
+          "type": "string",
+          "responsible": "DEV",
+          "recommended": "var_qr_si_no",
+          "constraints": false,
+          "name": "variable de control",
+          "description": "nombre que recibe la variable de contador",
+          "value": "var_qr_si_no"
+        }
+      }
+    },
+    "outputs": {
+      "01inicial": {
+        "default": {
+          "type": "output",
+          "responsible": "UX",
+          "recommended": false,
+          "constraints": false,
+          "name": "salida default de contador",
+          "value": "pruebaCorreo"
+        }
+      },
+      "mensajeOperador": {
+        "next": {
+          "type": "output",
+          "responsible": "UX",
+          "constraints": false,
+          "recommended": false,
+          "value": "pruebaCorreo"
+        }
+      }
+    },
+    "blocks": {
+      "01inicial": {
+        "inicial": {
+          "type": "@typeVisual",
+          "description": "Funciona como un contador que permite limitar el número de intentos al realizar algun proceso",
+          "compile": [
+            "jsonVariable",
+            "json"
+          ],
+          "parameters": {
+            "handlebars": "@jsonMenu",
+            "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'Numerico'}}",
+            "typingtime": "@time",
+            "nombreVariable": "@nombreVariable",
+            "json": "{'content':'{{content}}','buttons':[{'title':'<user_email>','next_block':'{{buttonTrue.next_block}}'},{'title':'{{buttonFalse.title}}','next_block':'capturaCorreo'}]}",
+            "content": "@content",
+            "buttonTrue": "@buttonTrue",
+            "buttonFalse": "@buttonFalse",
+            "typeVisual": "quickReply"
+          },
+          "outputs": {
+            "default_id": "@default"
+          }
+        }
+      },
+      "capturaCorreo": {
+        "inicial": {
+          "type": "input",
+          "description": "bloque que captura información y hace validacion con regex",
+          "compile": [
+            "jsonVariable"
+          ],
+          "name": "",
+          "parameters": {
+            "contenido": "@content",
+            "contenttype": "text",
+            "typingtime": 3,
+            "validacion": "^[a-z0-9]+[\\._]?[a-z0-9]+[@]\\w+[.]\\w{2,3}$",
+            "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'String'}}",
+            "nombreVariable": "email"
+          },
+          "outputs": {
+            "next_id": "pruebaCorreo_qrValidaSiNo_inicial",
+            "default_id": "pruebaCorreo_contadorIntentos_inicial"
+          }
+        }
+      },
+      "contadorIntentos": {
+        "inicial": {
+          "type": "case",
+          "description": "Funciona como un contador que permite limitar el número de intentos al realizar algun proceso",
+          "compile": [
+            "jsonVariable",
+            "url"
+          ],
+          "parameters": {
+            "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'Numerico'}}",
+            "intentos": "@intentos",
+            "method": "GET",
+            "typing_messages": 3,
+            "url": "http://127.0.0.1:1111/increase/{{nombreVariable}}/{{intentos}}/",
+            "messages": "@message",
+            "default_message": "@defaultMessage",
+            "nombreVariable": "contadorCorreo"
+          },
+          "outputs": {
+            "default_id": "pruebaCorreo_capturaCorreo_inicial",
+            "salidasCase": "pruebaCorreo_capturaCorreo_inicial",
+            "last": "pruebaCorreo_contadorIntentos_restarVariable"
+          }
+        },
+        "restarVariable": {
+          "type": "internalProcess",
+          "description": "bloque para realizar proceso interno del sistema",
+          "compile": [
+            "url"
+          ],
+          "parameters": {
+            "method": "GET",
+            "url": "http://127.0.0.1:1111/restar/{{nombreVariable}}",
+            "nombreVariable": "contadorCorreo"
+          },
+          "outputs": {
+            "next_true": "pruebaCorreo_mensajeOperador_inicial",
+            "next_false": "pruebaCorreo_mensajeOperador_inicial"
+          }
+        }
+      },
+      "mensajeOperador": {
+        "inicial": {
+          "type": "informativo",
+          "description": "bloque que despliega información",
+          "name": "",
+          "parameters": {
+            "contenido": "@content",
+            "contenttype": "text",
+            "typingtime": 3
+          },
+          "outputs": {
+            "next_id": "@next"
+          }
+        }
+      },
+      "qrValidaSiNo": {
+        "inicial": {
+          "type": "@typeVisual",
+          "description": "Funciona como un contador que permite limitar el número de intentos al realizar algun proceso",
+          "compile": [
+            "jsonVariable",
+            "json"
+          ],
+          "parameters": {
+            "handlebars": "@jsonMenu",
+            "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'Numerico'}}",
+            "typingtime": 3,
+            "nombreVariable": "@nombreVariable",
+            "json": "{'content':'{{content}}','buttons':[{'title':'{{buttonTrue.title}}','next_block':'{{buttonTrue.next_block}}'},{'title':'{{buttonFalse.title}}','next_block':'{{buttonFalse.next_block}}'}]}",
+            "content": "Tu correo es: @email",
+            "buttonTrue": {
+              "title": "sí",
+              "next_block": "01inicial"
+            },
+            "buttonFalse": {
+              "title": "No",
+              "next_block": "contadorIntentos"
+            },
+            "typeVisual": "quickReply"
+          },
+          "outputs": {
+            "default_id": "pruebaCorreo_mensajeOperador_inicial"
+          }
+        }
+      }
+    }
+  }
+}

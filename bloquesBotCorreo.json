@@ -1,0 +1,86 @@
+{
+    "prueba_inicio": {
+        "type": "informativo",
+        "description": "bloque que despliega información",
+        "name": "prueba_inicio",
+        "parameters": {
+            "contenido": "Hola, soy un chatbot y esto es un mensaje de prueba y adios",
+            "contenttype": "text",
+            "typingtime": 3,
+            "id_robot": 381
+        },
+        "outputs": {
+            "next_id": "pruebaCorreo_01inicial_inicial"
+        }
+    },
+    "prueba_qa": {
+        "type": "informativo",
+        "description": "bloque que despliega información",
+        "name": "prueba_qa",
+        "parameters": {
+            "contenido": "Vamos a ver si no truena",
+            "contenttype": "text",
+            "typingtime": 7,
+            "id_robot": 381
+        },
+        "outputs": {
+            "next_id": "pruebaCorreo_01inicial_inicial"
+        }
+    },
+    "prueba_dos": {
+        "type": "informativo",
+        "description": "bloque que despliega información",
+        "name": "prueba_dos",
+        "parameters": {
+            "contenido": "Puedo hacer muchas cosas, entre ellas despedirme. Adios",
+            "contenttype": "text",
+            "typingtime": 3,
+            "id_robot": 381
+        },
+        "outputs": {
+            "next_id": "Salida"
+        }
+    },
+    "pruebaCorreo_01inicial_inicial": {
+        "type": "quickReply",
+        "description": "bloque que despliega un quickReplay",
+        "parameters": {
+            "handlebars": "",
+            "jsonVariable": {
+                "variable": {
+                    "name_var": "var_case",
+                    "opc_type": "Variable",
+                    "var": 0,
+                    "opc_data": "Numerico"
+                }
+            },
+            "typingtime": 3,
+            "json": {
+                "content": "¿Cuál es tu correo?",
+                "buttons": [
+                    {
+                        "title": "email",
+                        "next_block": "prueba_dos"
+                    },
+                    {
+                        "title": "otro",
+                        "next_block": "prueba_qa"
+                    }
+                ]
+            },
+            "content": "¿Cuál es tu correo?",
+            "buttonTrue": {
+                "next_block": ""
+            },
+            "buttonFalse": {
+                "title": ""
+            },
+            "typeVisual": "",
+            "id_robot": 381
+        },
+        "outputs": {
+            "default_id": "prueba_qa"
+        },
+        "name": "pruebaCorreo_01inicial_inicial"
+    }
+}

@@ -1,0 +1,160 @@
+{
+    "pruebaCorreo_01inicial_inicial": {
+        "type": "quickReply",
+        "description": "bloque que despliega un quickReplay",
+        "parameters": {
+            "handlebars": "@jsonMenu",
+            "jsonVariable": {
+                "variable": {
+                    "name_var": "var_case",
+                    "opc_type": "Variable",
+                    "var": 0,
+                    "opc_data": "Numerico"
+                }
+            },
+            "typingtime": 3,
+            "json": {
+                "content": "¿Cuál es tu correo?",
+                "buttons": [
+                    {
+                        "title": "<user_email>",
+                        "next_block": "pruebaCorreo_01inicial_inicial"
+                    },
+                    {
+                        "title": "otro",
+                        "next_block": "pruebaCorreo_capturaCorreo_inicial"
+                    }
+                ]
+            },
+            "content": "¿Cuál es tu correo?",
+            "buttonTrue": {
+                "next_block": "pruebaCorreo"
+            },
+            "buttonFalse": {
+                "title": "otro"
+            },
+            "typeVisual": "quickReply"
+        },
+        "outputs": {
+            "default_id": "pruebaCorreo_01inicial_inicial"
+        },
+        "name": "pruebaCorreo_01inicial_inicial"
+    },
+    "pruebaCorreo_capturaCorreo_inicial": {
+        "type": "input",
+        "description": "bloque que captura información y hace validacion con regex",
+        "name": "pruebaCorreo_capturaCorreo_inicial",
+        "parameters": {
+            "contenido": "introduce tu correo",
+            "contenttype": "text",
+            "typingtime": 3,
+            "validacion": "/\\S+@\\S+\\.\\S+/",
+            "jsonVariable": {
+                "variable": {
+                    "name_var": "email",
+                    "opc_type": "Variable",
+                    "var": 0,
+                    "opc_data": "String"
+                }
+            }
+        },
+        "outputs": {
+            "next_id": "pruebaCorreo_qrValidaSiNo_inicial",
+            "default_id": "pruebaCorreo_contadorIntentos_inicial"
+        }
+    },
+    "pruebaCorreo_contadorIntentos_inicial": {
+        "type": "case",
+        "description": "bloque que funciona como case",
+        "parameters": {
+            "jsonVariable": {
+                "variable": {
+                    "name_var": "contadorCorreo",
+                    "opc_type": "Variable",
+                    "var": 0,
+                    "opc_data": "Numerico"
+                }
+            },
+            "method": "GET",
+            "typing_messages": 3,
+            "url": "http://127.0.0.1:1111/increase/contadorCorreo/3/",
+            "messages": "intentalo de nuevo por favor",
+            "default_message": "no logro comprender",
+            "type_default_message": "text",
+            "options": "pruebaCorreo_capturaCorreo_inicial,pruebaCorreo_capturaCorreo_inicial,pruebaCorreo_capturaCorreo_restarVariable"
+        },
+        "outputs": {
+            "default_id": "pruebaCorreo_capturaCorreo_inicial"
+        },
+        "name": "pruebaCorreo_contadorIntentos_inicial"
+    },
+    "pruebaCorreo_contadorIntentos_restarVariable": {
+        "type": "internalProcess",
+        "description": "bloque para realizar proceso interno del sistema",
+        "parameters": {
+            "method": "GET",
+            "url": "http://127.0.0.1:1111/restar/contadorCorreo"
+        },
+        "outputs": {
+            "next_true": "pruebaCorreo_mensajeOperador_inicial",
+            "next_false": "pruebaCorreo_mensajeOperador_inicial"
+        },
+        "name": "pruebaCorreo_contadorIntentos_restarVariable"
+    },
+    "pruebaCorreo_mensajeOperador_inicial": {
+        "type": "informativo",
+        "description": "bloque que despliega información",
+        "name": "pruebaCorreo_mensajeOperador_inicial",
+        "parameters": {
+            "contenido": "se le comunicará con un accesor",
+            "contenttype": "text",
+            "typingtime": 3
+        },
+        "outputs": {
+            "next_id": "pruebaCorreo_mensajeOperador_01inicial"
+        }
+    },
+    "pruebaCorreo_qrValidaSiNo_inicial": {
+        "type": "quickReply",
+        "description": "bloque que despliega un quickReplay",
+        "parameters": {
+            "handlebars": "@jsonMenu",
+            "jsonVariable": {
+                "variable": {
+                    "name_var": "var_qr_si_no",
+                    "opc_type": "Variable",
+                    "var": 0,
+                    "opc_data": "Numerico"
+                }
+            },
+            "typingtime": 3,
+            "json": {
+                "content": "Tu correo es: @email",
+                "buttons": [
+                    {
+                        "title": "sí",
+                        "next_block": "pruebaCorreo_01inicial_inicial"
+                    },
+                    {
+                        "title": "No",
+                        "next_block": "pruebaCorreo_contadorIntentos_inicial"
+                    }
+                ]
+            },
+            "content": "Tu correo es: @email",
+            "buttonTrue": {
+                "title": "sí",
+                "next_block": "01inicial"
+            },
+            "buttonFalse": {
+                "title": "No",
+                "next_block": "contadorIntentos"
+            },
+            "typeVisual": "quickReply"
+        },
+        "outputs": {
+            "default_id": "pruebaCorreo_mensajeOperador_inicial"
+        },
+        "name": "pruebaCorreo_qrValidaSiNo_inicial"
+    }
+}

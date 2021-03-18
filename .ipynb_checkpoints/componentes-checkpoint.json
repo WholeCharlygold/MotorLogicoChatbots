@@ -1,0 +1,708 @@
+{
+  "caseFijo": {
+    "description": "Componente para limitar intentos al introducir información",
+    "requirements": {
+      "nombreVariable": {
+        "type": "string",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      },
+      "message": {
+        "type": "dictDisplay",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "defaultMessage": {
+        "type": "dictDisplay",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "intentos": {
+        "type": "Numerico",
+        "responsible": "UX",
+        "recommended": 3,
+        "constraints": {
+          "description": "menor de 5",
+          "value": 3
+        }
+      },
+      "url": {
+        "type": "url",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      },
+      "time": {
+        "type": "numerico",
+        "order": 3,
+        "responsible": "UX",
+        "recommended": 3,
+        "constraints": [
+          {
+            "description": "menor de 5",
+            "value": 3
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "default": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "salidasCase": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "error": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      }
+    },
+    "blocks": {
+      "inicial": {
+        "type": "case",
+        "description": "Funciona como un contador que permite limitar el número de intentos al realizar algun proceso",
+        "compile": [
+          "jsonVariable",
+          "url"
+        ],
+        "parameters": {
+          "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'Numerico'}}",
+          "intentos": "@intentos",
+          "method": "GET",
+          "typing_messages": "@time",
+          "url": "@url",
+          "messages": "@message",
+          "default_message": "@defaultMessage",
+          "nombreVariable": "@nombreVariable"
+        },
+        "outputs": {
+          "default_id": "@default",
+          "salidasCase": "@salidasCase",
+          "last": "restarVariable"
+        }
+      },
+      "restarVariable": {
+        "type": "internalProcess",
+        "description": "bloque para realizar proceso interno del sistema",
+        "compile": [
+          "url"
+        ],
+        "parameters": {
+          "method": "GET",
+          "url": "http://127.0.0.1:1111/restar/{{nombreVariable}}",
+          "nombreVariable": "@nombreVariable"
+        },
+        "outputs": {
+          "next_true": "@error",
+          "next_false": "@error"
+        }
+      }
+    }
+  },
+  "caseDinamico": {
+    "description": "Componente para limitar intentos al introducir información",
+    "requirements": {
+      "nombreVariable": {
+        "type": "string",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      },
+      "messages": {
+        "type": "listDisplay",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "defaultMessage": {
+        "type": "dictDisplay",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "time": {
+        "type": "numerico",
+        "order": 3,
+        "responsible": "UX",
+        "recommended": 3,
+        "constraints": [
+          {
+            "description": "menor de 5",
+            "value": 3
+          }
+        ]
+      },
+      "url": {
+        "type": "url",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      }
+    },
+    "outputs": {
+      "default": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "salidasCase": {
+        "type": "listOutput",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "error": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      }
+    },
+    "blocks": {
+      "inicial": {
+        "type": "case",
+        "description": "Funciona como un contador que permite limitar el número de intentos al realizar algun proceso",
+        "compile": [
+          "jsonVariable",
+          "url"
+        ],
+        "parameters": {
+          "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'Numerico'}}",
+          "method": "GET",
+          "typing_messages": "@time",
+          "url": "@url",
+          "messages": "@messages",
+          "default_message": "@defaultMessage",
+          "nombreVariable": "@nombreVariable"
+        },
+        "outputs": {
+          "default_id": "@default",
+          "salidasCase": "@salidasCase",
+          "last": "restarVariable"
+        }
+      },
+      "restarVariable": {
+        "type": "internalProcess",
+        "description": "bloque para realizar proceso interno del sistema",
+        "compile": [
+          "url"
+        ],
+        "parameters": {
+          "method": "GET",
+          "url": "http://127.0.0.1:1111/restar/{{nombreVariable}}",
+          "nombreVariable": "@nombreVariable"
+        },
+        "outputs": {
+          "next_true": "@error",
+          "next_false": "@error"
+        }
+      }
+    }
+  },
+  "caseRandomMenssage": {
+    "description": "Componente para limitar intentos al introducir información",
+    "requirements": {
+      "nombreVariable": {
+        "type": "string",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      },
+      "messages": {
+        "type": "listDisplay",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "defaultMessage": {
+        "type": "dictDisplay",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "time": {
+        "type": "numerico",
+        "order": 3,
+        "responsible": "UX",
+        "recommended": 3,
+        "constraints": [
+          {
+            "description": "menor de 5",
+            "value": 3
+          }
+        ]
+      },
+      "url": {
+        "type": "url",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      }
+    },
+    "outputs": {
+      "default": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "next": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      }
+    },
+    "blocks": {
+      "inicial": {
+        "type": "case",
+        "description": "Funciona como un contador que permite limitar el número de intentos al realizar algun proceso",
+        "compile": [
+          "jsonVariable",
+          "url"
+        ],
+        "parameters": {
+          "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'Numerico'}}",
+          "method": "GET",
+          "typing_messages": "@time",
+          "url": "@url",
+          "messages": "@messages",
+          "default_message": "@defaultMessage",
+          "nombreVariable": "@nombreVariable"
+        },
+        "outputs": {
+          "default_id": "@default",
+          "salidasCase": "@next"
+        }
+      }
+    }
+  },
+  "caseListMenssages": {
+    "description": "Componente para limitar intentos al introducir información",
+    "requirements": {
+      "nombreVariable": {
+        "type": "string",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      },
+      "messages": {
+        "type": "listDisplay",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "defaultMessage": {
+        "type": "dictDisplay",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "time": {
+        "type": "numerico",
+        "order": 3,
+        "responsible": "UX",
+        "recommended": 3,
+        "constraints": [
+          {
+            "description": "menor de 5",
+            "value": 3
+          }
+        ]
+      },
+      "url": {
+        "type": "url",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      }
+    },
+    "outputs": {
+      "default": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "next": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      }
+    },
+    "blocks": {
+      "inicial": {
+        "type": "case",
+        "description": "Funciona como un contador que permite limitar el número de intentos al realizar algun proceso",
+        "compile": [
+          "jsonVariable",
+          "url"
+        ],
+        "parameters": {
+          "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'Numerico'}}",
+          "method": "GET",
+          "typing_messages": "@time",
+          "url": "@url",
+          "messages": "@messages",
+          "default_message": "@defaultMessage",
+          "nombreVariable": "@nombreVariable"
+        },
+        "outputs": {
+          "default_id": "@default",
+          "last": "restarVariable",
+          "salidasCase": "inicial"
+        }
+      },
+      "restarVariable": {
+        "type": "internalProcess",
+        "description": "bloque para realizar proceso interno del sistema",
+        "compile": [
+          "url"
+        ],
+        "parameters": {
+          "method": "GET",
+          "url": "http://127.0.0.1:1111/restar/{{nombreVariable}}",
+          "nombreVariable": "@nombreVariable"
+        },
+        "outputs": {
+          "next_true": "@next",
+          "next_false": "@next"
+        }
+      }
+    }
+  },
+  "visual": {
+    "description": "despliega menú en formato qr o carrusel",
+    "requirements": {
+      "nombreVariable": {
+        "type": "string",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      },
+      "typeVisual": {
+        "type": "select",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": [
+          {
+            "key": "quickreply",
+            "value": "quickReply"
+          },
+          {
+            "key": "carrusel",
+            "value": "slide"
+          }
+        ]
+      },
+      "time": {
+        "type": "select",
+        "responsible": "UX",
+        "recommended": 2,
+        "constraints": [
+          {
+            "key": "uno",
+            "value": 1
+          },
+          {
+            "key": "dos",
+            "value": 2
+          },
+          {
+            "key": "tres",
+            "value": 3
+          }
+        ]
+      },
+      "handlebars": {
+        "type": "Handlebars",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      },
+      "jsonMenu": {
+        "type": "jsonMenu",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      },
+      "buttonTrue": {
+        "type": "jonButton",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "buttonFalse": {
+        "type": "jonButton",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "content": {
+        "type": "string",
+        "responsible": "UX",
+        "recommended": false,
+        "contador": false
+      }
+    },
+    "outputs": {
+      "default": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "outputsButtons": {
+        "type": "list",
+        "responsible": "UX",
+        "constraints": false,
+        "recommended": false
+      }
+    },
+    "blocks": {
+      "inicial": {
+        "type": "@typeVisual",
+        "description": "Funciona como un contador que permite limitar el número de intentos al realizar algun proceso",
+        "compile": [
+          "jsonVariable",
+          "json"
+        ],
+        "parameters": {
+          "handlebars": "@jsonMenu",
+          "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'Numerico'}}",
+          "typingtime": "@time",
+          "nombreVariable": "@nombreVariable",
+          "json": "@handlebars",
+          "content": "@content",
+          "buttonTrue": "@buttonTrue",
+          "buttonFalse": "@buttonFalse",
+          "typeVisual": "@typeVisual"
+        },
+        "outputs": {
+          "default_id": "@default"
+        }
+      }
+    }
+  },
+  "informativo": {
+    "description": "despliega un mensaje al usuario",
+    "requirements": {
+      "time": {
+        "type": "select",
+        "responsible": "UX",
+        "recommended": 2,
+        "constraints": [
+          {
+            "key": "uno",
+            "value": 1
+          },
+          {
+            "key": "dos",
+            "value": 2
+          },
+          {
+            "key": "tres",
+            "value": 3
+          }
+        ]
+      },
+      "content": {
+        "type": "string",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      },
+      "contentType": {
+        "type": "select",
+        "responsible": "UX",
+        "recommended": 2,
+        "constraints": [
+          {
+            "key": "imagen",
+            "value": "image"
+          },
+          {
+            "key": "texto",
+            "value": "text"
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "next": {
+        "type": "output",
+        "responsible": "UX",
+        "constraints": false,
+        "recommended": false
+      }
+    },
+    "blocks": {
+      "inicial": {
+        "type": "informativo",
+        "description": "bloque que despliega información",
+        "name": "",
+        "parameters": {
+          "contenido": "@content",
+          "contenttype": "@contentType",
+          "typingtime": "@time"
+        },
+        "outputs": {
+          "next_id": "@next"
+        }
+      }
+    }
+  },
+  "input": {
+    "description": "peticion y validación de información ",
+    "requirements": {
+      "time": {
+        "type": "select",
+        "responsible": "UX",
+        "recommended": 2,
+        "constraints": [
+          {
+            "key": "uno",
+            "value": 1
+          },
+          {
+            "key": "dos",
+            "value": 2
+          },
+          {
+            "key": "tres",
+            "value": 3
+          }
+        ]
+      },
+      "content": {
+        "type": "string",
+        "responsible": "UX",
+        "recommended": false,
+        "contador": false
+      },
+      "regex": {
+        "type": "regex",
+        "responsible": "UX",
+        "recommended": false,
+        "contador": false
+      },
+      "nombreVariable": {
+        "type": "string",
+        "responsible": "DEV",
+        "recommended": false,
+        "constraints": false
+      },
+      "contentType": {
+        "type": "select",
+        "responsible": "UX",
+        "recommended": 2,
+        "constraints": [
+          {
+            "key": "imagen",
+            "value": "image"
+          },
+          {
+            "key": "texto",
+            "value": "text"
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "next": {
+        "type": "output",
+        "responsible": "UX",
+        "constraints": false,
+        "recommended": false
+      },
+      "default": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      }
+    },
+    "blocks": {
+      "inicial": {
+        "type": "input",
+        "description": "bloque que captura información y hace validacion con regex",
+        "compile": [
+          "jsonVariable"
+        ],
+        "name": "",
+        "parameters": {
+          "contenido": "@content",
+          "contenttype": "@contentType",
+          "typingtime": "@time",
+          "validacion": "@regex",
+          "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'String'}}",
+          "nombreVariable": "@nombreVariable"
+        },
+        "outputs": {
+          "next_id": "@next",
+          "default_id": "@default"
+        }
+      }
+    }
+  },
+  "nlp": {
+    "description": "componente de procesamiento de lenguaje natural",
+    "requirements": {
+      "defaultMessage": {
+        "type": "string",
+        "responsible": "UX",
+        "recommended": false,
+        "contador": false
+      },
+      "jsonNLP": {
+        "type": "jsonNLP",
+        "responsible": "DEV",
+        "recommended": false,
+        "contador": false
+      },
+      "jsonIntensionNLP":{
+        "type": "jsonIntensionNLP",
+        "responsible": "DEV",
+        "recommended": false,
+        "contador": false
+
+      }
+    },
+    "outputs": {
+      "default": {
+        "type": "output",
+        "responsible": "UX",
+        "recommended": false,
+        "constraints": false
+      }
+    },
+    "blocks": {
+      "inicial": {
+        "type": "nlp",
+        "description": "bloque de procesamiento de lenguaje  natural",
+        "name": "",
+        "parameters": {
+          "default_message": "@defaultMessage",
+          "json_nlp": "@jsonNLP",
+          "jsonIntensionNLP":"@jsonIntensionNLP"
+        },
+        "outputs": {
+          "default_id": "@default"
+        }
+      }
+    }
+  }
+}

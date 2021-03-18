@@ -1,0 +1,112 @@
+{
+  "case": {
+    "type": "case",
+    "description": "bloque que funciona como case",
+    "name": "caseIdentificacion",
+    "parameters": {
+      "messages": "Por favor escribe únicamente el número de tu contrato o el número de cuenta de tu servicio.,escribe únicamente el número de tu contrato,número de tu contrato:,maximo de intentos para introducir número de contrato",
+      "type_messages": "text,text,text,text",
+      "typing_messages": 3,
+      "options": "inputIdentificacion,inputIdentificacion,inputIdentificacion,internalRestar",
+      "url": "http://127.0.0.1:1111/increase/var_caseIdentificacion/4/",
+      "method": "GET",
+      "default_message": "mensaje defaul",
+      "type_default_message": "text",
+      "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': '{{tipoVariable}}',{{#if valorDefault}}'var':'{{valorDefault}}',{{/if}}'opc_data': '{{tipoDato}}','id_robot':'{{id_robot}}'}}"
+    },
+    "outputs": {
+      "default_id": "error"
+    }
+  },
+  "internalProcess": {
+    "type": "internalProcess",
+    "description": "bloque para realizar proceso interno del sistema",
+    "name": "internalRestar",
+    "parameters": {
+      "method": "GET",
+      "url": "http://127.0.0.1:1111/restar/var_caseIdentificacion"
+    },
+    "outputs": {
+      "next_true": "slideMenu",
+      "next_false": "slideMenu"
+    }
+  },
+  "slide": {
+    "type": "slide",
+    "description": "bloque que despliega carrucel",
+    "name": "slideMenu",
+    "parameters": {
+      "typingtime": 3,
+      "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': '{{tipoVariable}}',{{#if valorDefault}}'var':'{{valorDefault}}',{{/if}}'opc_data': '{{tipoDato}}','id_robot':'{{id_robot}}'}}",
+      "nombreVariable": "var_slideMenu",
+      "tipoVariable": "Variable",
+      "tipoDato": "Cadena",
+      "content": []
+    },
+    "outputs": {
+      "default_id": "error"
+    }
+  },
+  "quickReply": {
+    "type": "quickReply",
+    "description": "bloque que despliega un quickReplay",
+    "name": "qrIntro",
+    "parameters": {
+      "typingtime": 6,
+      "jsonQR": {},
+      "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': '{{tipoVariable}}',{{#if valorDefault}}'var':'{{valorDefault}}',{{/if}}'opc_data': '{{tipoDato}}','id_robot':'{{id_robot}}'}}",
+      "nombreVariable": "var_qrIntro",
+      "tipoVariable": "Variable",
+      "tipoDato": "Cadena"
+    },
+    "outputs": {
+      "default_id": "error"
+    }
+  },
+  "nlp": {
+    "type": "nlp",
+    "name": "nlp",
+    "description": "bloque de procesamiento de lenguaje  natural",
+    "parameters": {
+      "default_message": "@defaultMessage",
+      "jsonNLP": "@jsonNLP",
+      "jsonIntensionNLP":"@jsonIntensionNLP"
+    },
+    "outputs": {
+      "default_id": "@default"
+    }
+  },
+  "informativo": {
+    "type": "informativo",
+    "description": "bloque que despliega información",
+    "name": "",
+    "parameters": {
+      "contenido": "@content",
+      "contenttype": "@contentType",
+      "typingtime": "@time"
+    },
+    "outputs": {
+      "next_id": "@next"
+    }
+  },
+  "input": {
+    "type": "input",
+    "description": "bloque que captura información y hace validacion con regex",
+    "compile": [
+      "jsonVariable"
+    ],
+    "name": "",
+    "parameters": {
+      "contenido": "@content",
+      "contenttype": "@contentType",
+      "typingtime": "@time",
+      "validacion": "@regex",
+      "jsonVariable": "{'variable':{ 'name_var':'{{nombreVariable}}','opc_type': 'Variable','var':0,'opc_data': 'String'}}",
+      "nombreVariable": "@nombreVariable"
+    },
+    "outputs": {
+      "next_id": "@next",
+      "default_id": "@default"
+    }
+  }
+}
