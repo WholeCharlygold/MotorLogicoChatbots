@@ -5,7 +5,7 @@
             "description": "bloque que despliega información",
             "name": "prueba_inicio",
             "parameters": {
-                "contenido": "Hola, soy un chatbot y esto es un mensaje de prueba y adios",
+                "contenido": "Hola, soy un robot!",
                 "contenttype": "text",
                 "typingtime": 3
             },
