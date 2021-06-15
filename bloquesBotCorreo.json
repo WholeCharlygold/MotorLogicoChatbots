@@ -7,7 +7,7 @@
             "contenido": "Hola, soy un chatbot y esto es un mensaje de prueba y adios",
             "contenttype": "text",
             "typingtime": 3,
-            "id_robot": 391
+            "id_robot": 534
         },
         "outputs": {
             "next_id": "pruebaCorreo_01inicial_inicial"
@@ -21,7 +21,7 @@
             "contenido": "Vamos a ver si no truena",
             "contenttype": "text",
             "typingtime": 7,
-            "id_robot": 391
+            "id_robot": 534
         },
         "outputs": {
             "next_id": "pruebaCorreo_01inicial_inicial"
@@ -35,7 +35,7 @@
             "contenido": "Puedo hacer muchas cosas, entre ellas despedirme. Adios",
             "contenttype": "text",
             "typingtime": 3,
-            "id_robot": 391
+            "id_robot": 534
         },
         "outputs": {
             "next_id": "Salida"
@@ -76,7 +76,7 @@
                 "title": ""
             },
             "typeVisual": "",
-            "id_robot": 391
+            "id_robot": 534
         },
         "outputs": {
             "default_id": "prueba_qa"
@@ -113,7 +113,7 @@
                     "subtitle": "Esta es una prueba de carrusel."
                 }
             ],
-            "id_robot": 391
+            "id_robot": 534
         },
         "outputs": {
             "default_id": "prueba_qa"

@@ -2,6 +2,7 @@
     "bloques":{
         "prueba_inicio": {
             "type": "informativo",
+            "description": "bloque que despliega información",
             "name": "prueba_inicio",
             "parameters": {
                 "contenido": "Hola, soy un chatbot y esto es un mensaje de prueba y adios",
@@ -14,6 +15,7 @@
         },
         "prueba_captura": {
             "type": "input",
+            "description": "bloque que captura información y hace validacion con regex",
             "name": "prueba_captura",
             "parameters": {
                 "contenido": "introduce tu correo",
@@ -36,6 +38,7 @@
         },
         "prueba_qa": {
             "type": "informativo",
+            "description": "bloque que despliega información",
             "name": "prueba_qa",
             "parameters": {
                 "contenido": "Vamos a ver si no truena",
@@ -49,6 +52,7 @@
         },
         "mensaje_salida": {
             "type": "informativo",
+            "description": "bloque que despliega información",
             "name": "mensaje_salida",
             "parameters": {
                 "contenido": "Puedo hacer muchas cosas, entre ellas despedirme. Adios",
@@ -62,6 +66,7 @@
         },
         "Salida": {
             "type": "informativo",
+            "description": "bloque que despliega información",
             "name": "Salida",
             "parameters": {
                 "contenido": "Puedo hacer muchas cosas, entre ellas despedirme. Adios",
@@ -75,6 +80,7 @@
         },
         "pruebaCorreo_01inicial_inicial": {
             "type": "quickReply",
+            "description": "bloque que despliega un quickReplay",
             "parameters": {
                 "handlebars": "",
                 "jsonVariable": {
@@ -106,8 +112,7 @@
                 "buttonFalse": {
                     "title": ""
                 },
-                "typeVisual": ""            
-            },
+                "typeVisual": ""            },
             "outputs": {
                 "default_id": "prueba_qa"
             },
@@ -115,10 +120,11 @@
         },
         "prueba_slide": {
             "type": "slide",
+            "description": "bloque que despliega carrucel",
             "name": "prueba_slide",
             "parameters": {
                 "typingtime": 3,
-                "content": "Carrusel",
+                "content": "",
                 "nombreVariable": "var_slideMenu",
                 "jsonVariable": {
                     "variable": {

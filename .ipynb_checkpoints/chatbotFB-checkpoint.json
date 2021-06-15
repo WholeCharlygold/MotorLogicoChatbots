@@ -1,0 +1,9 @@
+{
+  "name_robot": "oliverBot",
+  "id_face": "2153123008120093",
+  "block_ini": "prueba_inicio",
+  "type_blocki": "quickreply",
+  "access_token": "EAAHNkscg2TcBAMvebksfOxuFBpMeR5sUhzHTKtqdi6NkqQKZAdkeaGVJ9Yc5bNbvL3JLzCgB7EEqsVUTZADhidVcC3zJV1UZB4Uz0Hm3fZB9IETnWb4I8MoK8nxpenC1lYwnjwnRwMHVZA1FKw8d3A45t9xCxmPKnm6kIr5ZCA8wZDZD",
+  "id_user": "oliverbp88@gmail.com",
+  "api_nlp":"http://localhost:8282/"
+}

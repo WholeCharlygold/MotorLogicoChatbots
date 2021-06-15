@@ -2,40 +2,20 @@
     "bloques":{
         "prueba_inicio": {
             "type": "informativo",
+            "description": "bloque que despliega información",
             "name": "prueba_inicio",
             "parameters": {
-                "contenido": "Hola, soy un chatbot y esto es un mensaje de prueba y adios",
+                "contenido": "Hola, soy un robot!",
                 "contenttype": "text",
                 "typingtime": 3
             },
             "outputs": {
-                "next_id": "prueba_captura"
-            }
-        },
-        "prueba_captura": {
-            "type": "input",
-            "name": "prueba_captura",
-            "parameters": {
-                "contenido": "introduce tu correo",
-                "contenttype": "text",
-                "typingtime": 3,
-                "validacion": "^[a-z0-9]+[\\._]?[a-z0-9]+[@]\\w+[.]\\w{2,3}$",
-                "jsonVariable": {
-                    "variable": {
-                        "name_var": "email",
-                        "opc_type": "Variable",
-                        "var": 0,
-                        "opc_data": "String"
-                    }
-                }
-            },
-            "outputs": {
-                "next_id": "pruebaCorreo_01inicial_inicial",
-                "default_id": "prueba_captura"
+                "next_id": "pruebaCorreo_01inicial_inicial"
             }
         },
         "prueba_qa": {
             "type": "informativo",
+            "description": "bloque que despliega información",
             "name": "prueba_qa",
             "parameters": {
                 "contenido": "Vamos a ver si no truena",
@@ -47,9 +27,10 @@
                 "next_id": "pruebaCorreo_01inicial_inicial"
             }
         },
-        "mensaje_salida": {
+        "prueba_dos": {
             "type": "informativo",
-            "name": "mensaje_salida",
+            "description": "bloque que despliega información",
+            "name": "prueba_dos",
             "parameters": {
                 "contenido": "Puedo hacer muchas cosas, entre ellas despedirme. Adios",
                 "contenttype": "text",
@@ -60,21 +41,9 @@
                 "next_id": "Salida"
             }
         },
-        "Salida": {
-            "type": "informativo",
-            "name": "Salida",
-            "parameters": {
-                "contenido": "Puedo hacer muchas cosas, entre ellas despedirme. Adios",
-                "contenttype": "text",
-                "typingtime": 3,
-                "id_robot": 380
-            },
-            "outputs": {
-                "next_id": ""
-            }
-        },
         "pruebaCorreo_01inicial_inicial": {
             "type": "quickReply",
+            "description": "bloque que despliega un quickReplay",
             "parameters": {
                 "handlebars": "",
                 "jsonVariable": {
@@ -90,11 +59,11 @@
                     "content": "¿Cuál es tu correo?",
                     "buttons": [
                         {
-                            "title": "Salir del bot.",
-                            "next_block": "mensaje_salida"
+                            "title": "email",
+                            "next_block": "prueba_dos"
                         },
                         {
-                            "title": "Probar carrusel",
+                            "title": "otro",
                             "next_block": "prueba_slide"
                         }
                     ]
@@ -106,8 +75,7 @@
                 "buttonFalse": {
                     "title": ""
                 },
-                "typeVisual": ""            
-            },
+                "typeVisual": ""            },
             "outputs": {
                 "default_id": "prueba_qa"
             },
@@ -115,10 +83,11 @@
         },
         "prueba_slide": {
             "type": "slide",
+            "description": "bloque que despliega carrucel",
             "name": "prueba_slide",
             "parameters": {
                 "typingtime": 3,
-                "content": "Carrusel",
+                "content": "",
                 "nombreVariable": "var_slideMenu",
                 "jsonVariable": {
                     "variable": {
@@ -135,18 +104,18 @@
                     {
                     "buttons":[
                         { 
-                            "titlebutton": "Youtube",
+                            "titlebutton": "Boton 1",
                             "typebutton": "web_url",
                             "opc_nextid": "https://www.youtube.com/"
                         },
                         { 
-                            "titlebutton": "Reddit",
+                            "titlebutton": "Boton 2",
                             "typebutton": "web_url",
                             "opc_nextid": "https://www.reddit.com/"
                         }
                     ],
                     "title": "Prueba titulo",
-                    "image_url": "https://infosertecblog.files.wordpress.com/2016/08/bot-de-telegram.jpg",
+                    "image_url": "https://st2.depositphotos.com/3008028/5540/i/600/depositphotos_55407975-stock-photo-royal-blue-background.jpg",
                     "subtitle": "Esta es una prueba de carrusel."
                     }
                 ]
@@ -157,12 +126,12 @@
         }
     } ,
     "chatbotFB": {
-        "name_robot": "charlybot",
-        "id_face": "111445520541316",
+        "name_robot": "oliverBot",
+        "id_face": "2153123008120093",
         "block_ini": "prueba_inicio",
-        "type_blocki": "informativo",
-        "access_token": "EAALZCCZBzPwfkBAAo7njAlW7s4DTj1ZCs5v1ung1MhEyMlJXOOtiG8r7JcBgXVPhZBHkJONyTB6jKG470UyqGPWn4aDPnisgtT2ZCZAwQIjQgZAZBufZBJXmHz6mPKSgdmP6ikDA87vocZBay2dfQdz1OYezmYbxwfILXUvXtjUMZAniQZDZD",
-        "id_user": "charlygoldcruz@gmail.com",
+        "type_blocki": "quickreply",
+        "access_token": "EAAHNkscg2TcBAMvebksfOxuFBpMeR5sUhzHTKtqdi6NkqQKZAdkeaGVJ9Yc5bNbvL3JLzCgB7EEqsVUTZADhidVcC3zJV1UZB4Uz0Hm3fZB9IETnWb4I8MoK8nxpenC1lYwnjwnRwMHVZA1FKw8d3A45t9xCxmPKnm6kIr5ZCA8wZDZD",
+        "id_user": "oliverbp88@gmail.com",
         "api_nlp":"http://localhost:8282/"
       }
       
