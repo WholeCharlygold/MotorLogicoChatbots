@@ -10,4 +10,4 @@ Este proyecto es el complementario y el encargado de poder transmitir los chatbo
 
 Para poder ejecutar el archivo de "servidor" debemos de tener localmente ejecutandose una instancia de RabbitMQ la mejor forma de hacer esto es desde la instancia de RabbitMQ en Docker (https://www.rabbitmq.com/download.html).
 
-Otra cosa importante a resaltar es que en este punto **ya debes de tener instalado en Postgres la base de datos**.
+Otra cosa importante a resaltar es que en este punto **ya debes de tener instalado en Postgres la base de datos**. El archivo para inicializar la base de datos se encuentra en este mismo repo o igualmente esta en el repo del [sistema gráfico](https://github.com/luisgmdz/sistema-grafico).
